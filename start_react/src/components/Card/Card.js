@@ -6,7 +6,7 @@ function Card(props){
         <section className={styles.item}>
             <div className={styles.item_img}>
                 <a href="#">
-                    <img src=""></img>
+                    <img src={props.imageUrl}></img>
                     <div className={styles.sale}>-30%</div>
                 </a>
             </div>
