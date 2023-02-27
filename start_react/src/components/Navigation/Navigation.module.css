@@ -1,0 +1,48 @@
+.search{
+    border: none;
+    border-bottom: 2px solid black;
+    width: 220px;
+    color: black;
+    font-weight: 600;
+    font-size: 15px;
+    height: 25px;
+}
+
+.navigation{
+    position: fixed;
+    right: 40px;
+    top: 70px;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.search a{
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.magnifying_glass{
+    margin-right: 15px;
+    width: 15px;
+}
+
+.icons img{
+    width: 20px;
+}
+
+.hamburger_menu{
+    position: fixed;
+    left: 8px;
+    top: 70px;
+    height: 27px;
+    width: 3%;
+    z-index: 1000;
+}
+
+.hamburger_menu img{
+    width: 100%;
+}
