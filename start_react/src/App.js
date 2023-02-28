@@ -27,7 +27,12 @@ function App() {
       <main className='main-grid'>
         {
           items.map(obj => (
-            <Card name={obj.name} addInfo={obj.addInfo} price={obj.price} imageUrl={obj.imageUrl}></Card>
+            <Card name={obj.name} 
+            addInfo={obj.addInfo} 
+            price={obj.price} 
+            imageUrl={obj.imageUrl} 
+            prevCost={obj.prevCost}>
+            </Card>
           ))
         }
       </main>

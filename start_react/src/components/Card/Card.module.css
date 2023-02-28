@@ -155,3 +155,7 @@
 {
     bottom: 45px;
 }
+
+.bolder{
+    font-weight: 600;
+}

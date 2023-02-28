@@ -15,7 +15,7 @@ function Card(props){
                 <div className={styles.description}>
                     <a href="#">
                         <p className={styles.lighter_black}>{props.name}</p>
-                        <p><span className={styles.red_font}>{props.price}PLN</span> <span className={styles.line_through}>199,00PLN</span></p>
+                        <p><span className={styles.bolder}>{props.price}PLN</span></p>
                         <p className={styles.light_grey_font}>{props.addInfo}</p>
                     </a>
                 </div>
