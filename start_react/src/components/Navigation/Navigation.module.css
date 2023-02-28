@@ -15,7 +15,7 @@
     display: flex;
     align-items: center;
     column-gap: 20px;
-    z-index: 100;
+    z-index: 10;
     cursor: pointer;
 }
 
@@ -40,7 +40,7 @@
     top: 70px;
     height: 27px;
     width: 3%;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .hamburger_menu img{

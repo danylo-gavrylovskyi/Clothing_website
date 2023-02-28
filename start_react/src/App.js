@@ -5,10 +5,10 @@ import Sale_alert from './components/Sale_alert/Sale_alert';
 import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
 import Current_category from './components/Current_category/Current-category';
+import Cart from './components/Cart/Cart';
 
 function App() {
   const [items, setItems] = React.useState([])
-
 
   React.useEffect(() => {
     fetch("https://63fce95c859df29986c75869.mockapi.io/items").then(response => {
