@@ -30,7 +30,8 @@ function App() {
             <Card name={obj.name} 
             addInfo={obj.addInfo} 
             price={obj.price} 
-            imageUrl={obj.imageUrl} 
+            imageUrl={obj.imageUrl}
+            hoverImgUrl ={obj.hoverImgUrl} 
             prevCost={obj.prevCost}>
             </Card>
           ))

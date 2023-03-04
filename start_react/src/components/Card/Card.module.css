@@ -159,3 +159,10 @@
 .bolder{
     font-weight: 600;
 }
+
+.hover_img{
+    transition: opacity 0.5s;
+    position: absolute;
+    left: 0px;
+    opacity: 1;
+}

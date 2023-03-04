@@ -3,48 +3,56 @@
         "name" : "Contrast colour block puffer j...",
         "addInfo" : "+ 5 Colours",
         "price" : "139,00",
-        "imageUrl" : "/img/green_puffer.png"
+        "imageUrl" : "/img/green_puffer.png",
+        "hoverImgUrl" : "/img/green_puffer_hover.jpg"
     },
     {
         "name" : "Varsity hoodie",
         "addInfo" : "+ 2 Colours",
         "price" : "125,00",
-        "imageUrl" : "/img/blue_hoodie.jpg"
+        "imageUrl" : "/img/blue_hoodie.jpg",
+        "hoverImgUrl" : "/img/blue_hoodie_hover.jpg"
     },
     {
         "name" : "Basic puffer jacket",
         "addInfo" : "",
         "price" : "179,00",
-        "imageUrl" : "/img/basic_puffer_jacket.jpg"
+        "imageUrl" : "/img/basic_puffer_jacket.jpg",
+        "hoverImgUrl" : "/img/basic_puffer_jacket_hover.jpg"
     },
     {
         "name" : "STWD basic lightweight puffer...",
         "addInfo" : "+ 3 Colours",
         "price" : "179,00",
-        "imageUrl" : "/img/lightweight_puffer.jpg"
+        "imageUrl" : "/img/lightweight_puffer.jpg",
+        "hoverImgUrl" : "/img/lightweight_puffer_hover.jpg"
     },
     {
         "name" : "Basic hooded sweatshirt",
         "addInfo" : "+ 15 Colours",
         "price" : "99,90",
-        "imageUrl" : "/img/basic_black_hoodie.jpg"
+        "imageUrl" : "/img/basic_black_hoodie.jpg",
+        "hoverImgUrl" : "/img/basic_black_hoodie_hover.jpg"
     },
     {
         "name" : "Star Wars Christmas sweater",
         "addInfo" : "",
         "price" : "69,90",
-        "imageUrl" : "/img/star_wars_sweater.jpg"
+        "imageUrl" : "/img/star_wars_sweater.jpg",
+        "hoverImgUrl" : "/img/star_wars_sweater_hover.jpg"
     },
     {
         "name" : "One Piece hoodie",
         "addInfo" : "",
         "price" : "139,00",
-        "imageUrl" : "/img/one_piece_hoodie.jpg"
+        "imageUrl" : "/img/one_piece_hoodie.jpg",
+        "hoverImgUrl" : "/img/one_piece_hoodie_hover.jpg"
     },
     {
         "name" : "Checked overshirt with faux s...",
         "addInfo" : "",
         "price" : "119,00",
-        "imageUrl" : "/img/checked_overshirt.jpg"
+        "imageUrl" : "/img/checked_overshirt.jpg",
+        "hoverImgUrl" : "/img/checked_overshirt_hover.jpg"
     }
 ]
