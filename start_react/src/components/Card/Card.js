@@ -9,6 +9,8 @@ function Card(props){
         setOnImage(!onImage)
     }
 
+    const [size, setSize] = React.useState("SIZE")
+
     return(
         <section className={styles.item}>
             <div className={styles.item_img}>
@@ -17,7 +19,7 @@ function Card(props){
                     {onImage && <img className={styles.hover_img} src={props.hoverImgUrl}></img>}
                     <div className={styles.sale}>-30%</div>
 
-                    {onImage && <ChooseSize></ChooseSize>}
+                    {onImage && <ChooseSize size={size} setSize={setSize}></ChooseSize>}
                 </div>
             </div>
 
