@@ -26,3 +26,12 @@
     top: 10px;
     cursor: pointer;
 }
+
+.cartItem{
+    display: grid;
+    height: 200px;
+}
+
+.itemImg{
+    width: 1%;
+}

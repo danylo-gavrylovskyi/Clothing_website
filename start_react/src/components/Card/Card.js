@@ -1,6 +1,5 @@
 import React from "react";
 import styles from './Card.module.css'; 
-import ChooseSize from "../ChooseSize/ChooseSize";
 
 function Card(props){
     const [onImage, setOnImage] = React.useState(false)
@@ -11,6 +10,12 @@ function Card(props){
 
     const [size, setSize] = React.useState("SIZE")
 
+    const [isShown, setShow] = React.useState(false)
+
+    function showSizes(){
+        setShow(!isShown)
+    }
+
     return(
         <section className={styles.item}>
             <div className={styles.item_img}>
@@ -19,7 +24,18 @@ function Card(props){
                     {onImage && <img className={styles.hover_img} src={props.hoverImgUrl}></img>}
                     <div className={styles.sale}>-30%</div>
 
-                    {onImage && <ChooseSize size={size} setSize={setSize}></ChooseSize>}
+                    {onImage &&
+                    <div className={styles.dropdown_sizes_menu}>
+                        {isShown && <div onMouseLeave={showSizes} className={styles.size_options}>
+                            <p onClick={() => {setSize("XS"); showSizes()}}>XS</p>
+                            <p onClick={() => {setSize("S"); showSizes()}}>S</p>
+                            <p onClick={() => {setSize("M"); showSizes()}}>M</p>
+                            <p onClick={() => {setSize("L"); showSizes()}}>L</p>
+                            <p onClick={() => {setSize("XL"); showSizes()}}>XL</p>
+                        </div>}
+                        <p className={styles.choosed_option} onMouseEnter={showSizes}> {size} <img src="img/icons/down_arrow.svg"></img></p>
+                        <button className={styles.add_to_cart} onClick={props.setCartItems(props.item)}>ADD</button>
+                    </div>}
                 </div>
             </div>
 

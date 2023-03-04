@@ -1,12 +1,8 @@
 import React from "react"
 import styles from "./Navigation.module.css"
-import bag from "./bag-outline.svg"
-import magnifying_glass from "./magnifying-glass.svg"
-import user from "./user.svg"
-import hamburger_menu from "./hamburger-menu.svg"
 import Cart from "../Cart/Cart"
 
-function Navigation(){
+function Navigation(props){
     const [isCartOpened, setCart] = React.useState(false)
 
     function changeCart(){
@@ -17,17 +13,17 @@ function Navigation(){
         <>
         <nav className={styles.navigation}>
             <div className={styles.search}>
-                <a href=""><img className={styles.magnifying_glass} src={magnifying_glass}></img>SEARCH</a>
+                <a href=""><img className={styles.magnifying_glass} src="img/icons/magnifying-glass.svg"></img>SEARCH</a>
             </div>
-            <a className={styles.icons}><img src={user}></img></a>
-            <a className={styles.icons} onClick={changeCart}><img src={bag}></img></a>
+            <a className={styles.icons}><img src="img/icons/user.svg"></img></a>
+            <a className={styles.icons} onClick={changeCart}><img src="img/icons/bag-outline.svg"></img></a>
         </nav>
         
         <nav className={styles.hamburger_menu}>
-            <img src={hamburger_menu}></img>
+            <img src="img/icons/hamburger-menu.svg"></img>
         </nav>
 
-        {isCartOpened && <Cart close={changeCart}></Cart>}
+        {isCartOpened && <Cart cartItems={props.cartItems} close={changeCart}></Cart>}
         </>
     )
 }

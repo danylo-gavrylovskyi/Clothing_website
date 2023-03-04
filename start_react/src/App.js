@@ -1,11 +1,7 @@
-import './App.css';
+import styles from './App.module.css';
 import React from 'react';
 import Card from './components/Card/Card'
-import Sale_alert from './components/Sale_alert/Sale_alert';
-import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
-import Current_category from './components/Current_category/Current-category';
-import Cart from './components/Cart/Cart';
 
 function App() {
   const [items, setItems] = React.useState([])
@@ -18,13 +14,40 @@ function App() {
     })
   }, [])
 
+  const [cartItems, setCartItems] = React.useState([])
+
+  function onAddToCart(obj){
+    setCartItems(prev => [...prev, obj])
+  }
+
+
   return (
     <body>
-      <Sale_alert></Sale_alert>
-      <Logo></Logo>
-      <Navigation></Navigation>
-      <Current_category></Current_category>
-      <main className='main-grid'>
+      <a className={styles.sale_alert} href="#">
+        Sale: <>&nbsp;</><span className={styles.bolder}>UP TO -50%!</span> Free store delivery
+        and free returns.. <span className={styles.underlined}>SHOP!</span>
+      </a>
+
+
+      <div className={styles.logo}>
+        <img src="img/icons/logo-template.svg"></img>
+      </div>
+
+
+      <Navigation cartItems={cartItems}></Navigation>
+      
+      <div className={styles.current_category}>
+        <div>
+            <span className={styles.bolder}>Best sellers <>&#10084;</> / <span className={styles.lightgrey}>231 items</span></span>
+        </div>
+
+        <div className={styles.filter_buttons}>
+            <button className={styles.see}>See 2</button>
+            <button className={styles.filter}>Filter</button>
+        </div>
+      </div>
+
+      <main className={styles.main_grid}>
         {
           items.map(obj => (
             <Card name={obj.name} 
@@ -32,7 +55,10 @@ function App() {
             price={obj.price} 
             imageUrl={obj.imageUrl}
             hoverImgUrl ={obj.hoverImgUrl} 
-            prevCost={obj.prevCost}>
+            prevCost={obj.prevCost}
+            cartItems={cartItems}
+            setCartItems={() => onAddToCart()}
+            item={obj}>
             </Card>
           ))
         }
