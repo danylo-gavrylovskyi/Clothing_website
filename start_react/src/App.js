@@ -1,7 +1,7 @@
 import styles from './App.module.css';
 import React from 'react';
 import Card from './components/Card/Card'
-import Navigation from './components/Navigation/Navigation';
+import Cart from './components/Cart/Cart';
 
 function App() {
   const [items, setItems] = React.useState([])
@@ -15,11 +15,19 @@ function App() {
   }, [])
 
   const [cartItems, setCartItems] = React.useState([])
+  React.useEffect(() => {
+    console.log(cartItems)
+  }, [cartItems])
 
   function onAddToCart(obj){
     setCartItems(prev => [...prev, obj])
   }
 
+  const [isCartOpened, setCart] = React.useState(false)
+
+  function changeCart(){
+    setCart(isCartOpened=>!isCartOpened)
+  }
 
   return (
     <body>
@@ -33,8 +41,20 @@ function App() {
         <img src="img/icons/logo-template.svg"></img>
       </div>
 
+      <nav className={styles.navigation}>
+            <div className={styles.search}>
+                <a href=""><img className={styles.magnifying_glass} src="img/icons/magnifying-glass.svg"></img>SEARCH</a>
+            </div>
+            <a className={styles.icons}><img src="img/icons/user.svg"></img></a>
+            <a className={styles.icons} onClick={changeCart}><img src="img/icons/bag-outline.svg"></img></a>
+        </nav>
+        
+        <nav className={styles.hamburger_menu}>
+            <img src="img/icons/hamburger-menu.svg"></img>
+        </nav>
 
-      <Navigation cartItems={cartItems}></Navigation>
+        {isCartOpened && <Cart cart={cartItems} close={changeCart}></Cart>}
+      {/* <Navigation cartItems={cartItems}></Navigation> */}
       
       <div className={styles.current_category}>
         <div>
@@ -57,7 +77,7 @@ function App() {
             hoverImgUrl ={obj.hoverImgUrl} 
             prevCost={obj.prevCost}
             cartItems={cartItems}
-            setCartItems={() => onAddToCart()}
+            cartAddHandler={onAddToCart}
             item={obj}>
             </Card>
           ))

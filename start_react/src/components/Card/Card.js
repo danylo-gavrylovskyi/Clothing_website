@@ -34,7 +34,7 @@ function Card(props){
                             <p onClick={() => {setSize("XL"); showSizes()}}>XL</p>
                         </div>}
                         <p className={styles.choosed_option} onMouseEnter={showSizes}> {size} <img src="img/icons/down_arrow.svg"></img></p>
-                        <button className={styles.add_to_cart} onClick={props.setCartItems(props.item)}>ADD</button>
+                        <button className={styles.add_to_cart} onClick={() => props.cartAddHandler(props.item)}>ADD</button>
                     </div>}
                 </div>
             </div>
