@@ -15,9 +15,6 @@ function App() {
   }, [])
 
   const [cartItems, setCartItems] = React.useState([])
-  React.useEffect(() => {
-    console.log(cartItems)
-  }, [cartItems])
 
   function onAddToCart(obj){
     setCartItems(prev => [...prev, obj])
@@ -30,7 +27,7 @@ function App() {
   }
 
   return (
-    <body>
+    <div className={styles.main_body}>
       <a className={styles.sale_alert} href="#">
         Sale: <>&nbsp;</><span className={styles.bolder}>UP TO -50%!</span> Free store delivery
         and free returns.. <span className={styles.underlined}>SHOP!</span>
@@ -54,7 +51,6 @@ function App() {
         </nav>
 
         {isCartOpened && <Cart cart={cartItems} close={changeCart}></Cart>}
-      {/* <Navigation cartItems={cartItems}></Navigation> */}
       
       <div className={styles.current_category}>
         <div>
@@ -70,7 +66,9 @@ function App() {
       <main className={styles.main_grid}>
         {
           items.map(obj => (
-            <Card name={obj.name} 
+            <Card 
+            key={obj.name}
+            name={obj.name} 
             addInfo={obj.addInfo} 
             price={obj.price} 
             imageUrl={obj.imageUrl}
@@ -83,7 +81,7 @@ function App() {
           ))
         }
       </main>
-    </body>
+    </div>
   );
 }
 
