@@ -6,8 +6,8 @@ function Cart({close, cart = []}){
         <div className={styles.overlay}>
             <div className={styles.cart}>
                 <div className={styles.header}>
-                    <div className={styles.bag_title}>Shopping Bag</div>
-                    <div><img onClick={close} className={styles.close} src="/img/icons/close.svg"></img></div>
+                    <div className={styles.bag_title}>Shopping Bag<img src="img/icons/bag-outline.svg"></img></div>
+                    <div className={styles.close_btn}><img onClick={close} className={styles.close_image} src="/img/icons/close.svg"></img></div>
                 </div>
 
                 {cart.map(obj => (
