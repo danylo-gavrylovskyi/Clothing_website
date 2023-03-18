@@ -109,10 +109,23 @@ a{
   border: none;
   border-bottom: 2px solid black;
   width: 220px;
-  color: black;
+  height: 25px;
+}
+
+.search input{
+  border: none;
   font-weight: 600;
   font-size: 15px;
-  height: 25px;
+  background-color: transparent;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+::placeholder{
+  color: black;
+  opacity: 1;
 }
 
 .navigation{

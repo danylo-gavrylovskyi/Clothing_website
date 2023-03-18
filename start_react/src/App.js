@@ -40,10 +40,11 @@ function App() {
 
       <nav className={styles.navigation}>
             <div className={styles.search}>
-                <a href=""><img className={styles.magnifying_glass} src="img/icons/magnifying-glass.svg"></img>SEARCH</a>
+              <img className={styles.magnifying_glass} src="img/icons/magnifying-glass.svg"></img>
+              <input type="text" placeholder='SEARCH'></input>
             </div>
             <a className={styles.icons}><img src="img/icons/user.svg"></img></a>
-            <a className={styles.icons} onClick={changeCart}><img src="img/icons/bag-outline.svg"></img></a>
+            <div className={styles.icons} onClick={changeCart}><img src="img/icons/bag-outline.svg"></img></div>
         </nav>
         
         <nav className={styles.hamburger_menu}>
