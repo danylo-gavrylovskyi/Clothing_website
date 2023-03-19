@@ -26,6 +26,11 @@ function App() {
     setCart(isCartOpened=>!isCartOpened)
   }
 
+  const [searchInput, setSearchInput] = React.useState()
+  function onChangeSearchInput(event){
+    setSearchInput(event.target.value)
+  }
+
   return (
     <div className={styles.main_body}>
       <a className={styles.sale_alert} href="#">
@@ -41,7 +46,7 @@ function App() {
       <nav className={styles.navigation}>
             <div className={styles.search}>
               <img className={styles.magnifying_glass} src="img/icons/magnifying-glass.svg"></img>
-              <input type="text" placeholder='SEARCH'></input>
+              <input onChange={onChangeSearchInput} type="text" placeholder='SEARCH'></input>
             </div>
             <a className={styles.icons}><img src="img/icons/user.svg"></img></a>
             <div className={styles.icons} onClick={changeCart}><img src="img/icons/bag-outline.svg"></img></div>
@@ -55,7 +60,7 @@ function App() {
       
       <div className={styles.current_category}>
         <div>
-            <span className={styles.bolder}>Best sellers <>&#10084;</> / <span className={styles.lightgrey}>231 items</span></span>
+            {searchInput ? <div className={styles.bolder}>Search by: {searchInput}</div>: <span className={styles.bolder}>Best sellers <>&#10084;</> / <span className={styles.lightgrey}>231 items</span></span>}
         </div>
 
         <div className={styles.filter_buttons}>
@@ -66,7 +71,7 @@ function App() {
 
       <main className={styles.main_grid}>
         {
-          items.map(obj => (
+          items.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase())).map(obj => (
             <Card 
             key={obj.name}
             name={obj.name} 
