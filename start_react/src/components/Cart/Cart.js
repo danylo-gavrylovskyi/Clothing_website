@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Cart.module.css"
 
-function isCartEmpty(array){
+function isCartEmpty(array, onRemove){
     if (array.length === 0){
         return(
             <div className={styles.empty_cart_text}>
@@ -21,14 +21,14 @@ function isCartEmpty(array){
                 <div className={styles.margin_left}>
                     <p>{obj.name}</p>
                     <p className={styles.price}>{obj.price}PLN</p>
-                    <img className={styles.bin} src="img/icons/bin.svg"></img>
+                    <img onClick={() => onRemove(obj.id)} className={styles.bin} src="img/icons/bin.svg"></img>
                 </div>
             </section>
         ))
     }
 }
 
-function Cart({close, cart = []}){
+function Cart({close, cart = [], onRemove}){
     return(
         <div className={styles.overlay}>
             <div className={styles.cart}>
@@ -37,7 +37,7 @@ function Cart({close, cart = []}){
                     <div className={styles.close_btn}><img onClick={close} className={styles.close_image} src="/img/icons/close.svg"></img></div>
                 </div>
 
-                {isCartEmpty(cart)}
+                {isCartEmpty(cart, onRemove)}
 
             </div>
         </div>

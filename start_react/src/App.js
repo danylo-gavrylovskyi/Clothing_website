@@ -1,5 +1,6 @@
 import styles from './App.module.css';
 import React from 'react';
+import axios from 'axios'
 import Card from './components/Card/Card'
 import Cart from './components/Cart/Cart';
 
@@ -7,17 +8,25 @@ function App() {
   const [items, setItems] = React.useState([])
 
   React.useEffect(() => {
-    fetch("https://63fce95c859df29986c75869.mockapi.io/items").then(response => {
-      return response.json()
-    }).then(json => {
-        setItems(json)
+    axios.get("https://63fce95c859df29986c75869.mockapi.io/items").then(res => {
+      setItems(res.data)
+    })
+
+    axios.get("https://63fce95c859df29986c75869.mockapi.io/cart").then(res => {
+      setCartItems(res.data)
     })
   }, [])
 
   const [cartItems, setCartItems] = React.useState([])
 
   function onAddToCart(obj){
+    axios.post("https://63fce95c859df29986c75869.mockapi.io/cart", obj)
     setCartItems(prev => [...prev, obj])
+  }
+
+  function onRemoveFromCart(id){
+    axios.delete(`https://63fce95c859df29986c75869.mockapi.io/cart/${id}`)
+    setCartItems(prev => prev.filter(item => item.id !== id))
   }
 
   const [isCartOpened, setCart] = React.useState(false)
@@ -26,7 +35,7 @@ function App() {
     setCart(isCartOpened=>!isCartOpened)
   }
 
-  const [searchInput, setSearchInput] = React.useState()
+  const [searchInput, setSearchInput] = React.useState("")
   function onChangeSearchInput(event){
     setSearchInput(event.target.value)
   }
@@ -56,7 +65,7 @@ function App() {
             <img src="img/icons/hamburger-menu.svg"></img>
         </nav>
 
-        {isCartOpened && <Cart cart={cartItems} close={changeCart}></Cart>}
+        {isCartOpened && <Cart cart={cartItems} close={changeCart} onRemove={onRemoveFromCart}></Cart>}
       
       <div className={styles.current_category}>
         <div>

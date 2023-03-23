@@ -1,5 +1,6 @@
 [
     {
+        "id" : "1",
         "name" : "Contrast colour block puffer j...",
         "addInfo" : "+ 5 Colours",
         "price" : "139,00",
@@ -7,6 +8,7 @@
         "hoverImgUrl" : "/img/green_puffer_hover.jpg"
     },
     {
+        "id" : "2",
         "name" : "Varsity hoodie",
         "addInfo" : "+ 2 Colours",
         "price" : "125,00",
@@ -14,6 +16,7 @@
         "hoverImgUrl" : "/img/blue_hoodie_hover.jpg"
     },
     {
+        "id" : "3",
         "name" : "Basic puffer jacket",
         "addInfo" : "",
         "price" : "179,00",
@@ -21,6 +24,7 @@
         "hoverImgUrl" : "/img/basic_puffer_jacket_hover.jpg"
     },
     {
+        "id" : "4",
         "name" : "STWD basic lightweight puffer...",
         "addInfo" : "+ 3 Colours",
         "price" : "179,00",
@@ -28,6 +32,7 @@
         "hoverImgUrl" : "/img/lightweight_puffer_hover.jpg"
     },
     {
+        "id" : "5",
         "name" : "Basic hooded sweatshirt",
         "addInfo" : "+ 15 Colours",
         "price" : "99,90",
@@ -35,6 +40,7 @@
         "hoverImgUrl" : "/img/basic_black_hoodie_hover.jpg"
     },
     {
+        "id" : "6",
         "name" : "Star Wars Christmas sweater",
         "addInfo" : "",
         "price" : "69,90",
@@ -42,6 +48,7 @@
         "hoverImgUrl" : "/img/star_wars_sweater_hover.jpg"
     },
     {
+        "id" : "7",
         "name" : "One Piece hoodie",
         "addInfo" : "",
         "price" : "139,00",
@@ -49,6 +56,7 @@
         "hoverImgUrl" : "/img/one_piece_hoodie_hover.jpg"
     },
     {
+        "id" : "8",
         "name" : "Checked overshirt with faux s...",
         "addInfo" : "",
         "price" : "119,00",
