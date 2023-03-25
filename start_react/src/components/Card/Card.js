@@ -16,6 +16,11 @@ function Card(props){
         setShow(!isShown)
     }
 
+    const [isLiked, setLiked] = React.useState(false)
+    function addToLiked(){
+        setLiked(!isLiked)
+    }
+
     return(
         <section className={styles.item}>
             <div className={styles.item_img}>
@@ -49,8 +54,7 @@ function Card(props){
                 </div>
 
                 <div className={styles.like_btn}>
-                    <button><img className={styles.like_btn_img} src="img/icons/void-heart-svgrepo-com.svg"></img></button>
-                    <button className={styles.filled_heart}><img src="img/icons/red-heart-svgrepo-com.svg"></img></button>
+                    <button onClick={addToLiked}><img className={styles.like_btn_img} src={isLiked ? "img/icons/red-heart.svg" : "img/icons/void-heart.svg"}></img></button>
                 </div>
             </div>
         </section>
