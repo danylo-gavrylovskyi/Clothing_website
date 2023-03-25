@@ -51,6 +51,7 @@ a{
   padding-bottom: 7px;
   position: absolute;
   cursor: pointer;
+  top: 0px;
 }
 
 .underlined{

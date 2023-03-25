@@ -1,8 +1,10 @@
 import styles from './App.module.css';
 import React from 'react';
 import axios from 'axios'
-import Card from './components/Card/Card'
 import Cart from './components/Cart/Cart';
+import Home from './pages/Home'
+import Liked from './pages/Liked';
+import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   const [items, setItems] = React.useState([])
@@ -40,17 +42,17 @@ function App() {
     setSearchInput(event.target.value)
   }
 
+  const [likedItems, setLikedItems] = React.useState([])
+
   return (
     <div className={styles.main_body}>
-      <a className={styles.sale_alert} href="#">
-        Sale: <>&nbsp;</><span className={styles.bolder}>UP TO -50%!</span> Free store delivery
-        and free returns.. <span className={styles.underlined}>SHOP!</span>
-      </a>
+      
 
-
-      <div className={styles.logo}>
-        <img src="img/icons/logo-template.svg"></img>
-      </div>
+      <Link to='/'>
+        <div className={styles.logo}>
+          <img src="img/icons/logo-template.svg"></img>
+        </div>
+      </Link>
 
       <nav className={styles.navigation}>
             <div className={styles.search}>
@@ -58,6 +60,9 @@ function App() {
               <input onChange={onChangeSearchInput} type="text" placeholder='SEARCH'></input>
             </div>
             <a className={styles.icons}><img src="img/icons/user.svg"></img></a>
+            <Link to='/liked'>
+              <div className={styles.icons}><img src="img/icons/heart-fill.svg"></img></div>
+            </Link>
             <div className={styles.icons} onClick={changeCart}><img src="img/icons/bag-outline.svg"></img></div>
         </nav>
         
@@ -66,36 +71,16 @@ function App() {
         </nav>
 
         {isCartOpened && <Cart cart={cartItems} close={changeCart} onRemove={onRemoveFromCart}></Cart>}
-      
-      <div className={styles.current_category}>
-        <div>
-            {searchInput ? <div className={styles.bolder}>Search by: {searchInput}</div>: <span className={styles.bolder}>Best sellers <>&#10084;</> / <span className={styles.lightgrey}>231 items</span></span>}
-        </div>
 
-        <div className={styles.filter_buttons}>
-            <button className={styles.see}>See 2</button>
-            <button className={styles.filter}>Filter</button>
-        </div>
-      </div>
+        <Routes>
+          <Route path='/' exact element={
+            <Home searchInput={searchInput} items={items} cartItems={cartItems} onAddToCart={onAddToCart}/>}>
+          </Route>
 
-      <main className={styles.main_grid}>
-        {
-          items.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase())).map(obj => (
-            <Card 
-            key={obj.name}
-            name={obj.name} 
-            addInfo={obj.addInfo} 
-            price={obj.price} 
-            imageUrl={obj.imageUrl}
-            hoverImgUrl ={obj.hoverImgUrl} 
-            prevCost={obj.prevCost}
-            cartItems={cartItems}
-            cartAddHandler={onAddToCart}
-            item={obj}>
-            </Card>
-          ))
-        }
-      </main>
+          <Route path='/liked' exact element={
+            <Liked searchInput={searchInput} items={items} cartItems={cartItems} onAddToCart={onAddToCart}/>}>
+          </Route>
+        </Routes>
     </div>
   );
 }
