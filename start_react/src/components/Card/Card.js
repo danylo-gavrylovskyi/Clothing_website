@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './Card.module.css'; 
 
-function Card(props){
+function Card({imageUrl, hoverImgUrl, cartAddHandler, name, price, addInfo, obj, liked=false, onAddToLiked}){
     const [onImage, setOnImage] = React.useState(false)
 
     function isHovered(){
@@ -16,17 +16,19 @@ function Card(props){
         setShow(!isShown)
     }
 
-    const [isLiked, setLiked] = React.useState(false)
-    function addToLiked(){
-        setLiked(!isLiked)
+    const [isClickedLike, setLiked] = React.useState(liked)
+    const onLike = (item) => {
+        setLiked(!isClickedLike)
+        console.log(item.id)
+        onAddToLiked(item)
     }
 
     return(
         <section className={styles.item}>
             <div className={styles.item_img}>
                 <div onMouseEnter={isHovered} onMouseLeave={isHovered}>
-                    <img src={props.imageUrl} ></img>
-                    {onImage && <img className={styles.hover_img} src={props.hoverImgUrl}></img>}
+                    <img src={imageUrl} ></img>
+                    {onImage && <img className={styles.hover_img} src={hoverImgUrl}></img>}
                     <div className={styles.sale}>-30%</div>
 
                     {onImage &&
@@ -39,7 +41,7 @@ function Card(props){
                             <p onClick={() => {setSize("XL"); showSizes()}}>XL</p>
                         </div>}
                         <p className={styles.choosed_option} onMouseEnter={showSizes}> {size} <img src="img/icons/down_arrow.svg"></img></p>
-                        <button className={styles.add_to_cart} onClick={() => props.cartAddHandler(props.item)}>ADD</button>
+                        <button className={styles.add_to_cart} onClick={() => cartAddHandler(obj)}>ADD</button>
                     </div>}
                 </div>
             </div>
@@ -47,14 +49,14 @@ function Card(props){
             <div className={styles.grid_under_image}>
                 <div className={styles.description}>
                     <a href="#">
-                        <p className={styles.lighter_black}>{props.name}</p>
-                        <p><span className={styles.bolder}>{props.price}PLN</span></p>
-                        <p className={styles.light_grey_font}>{props.addInfo}</p>
+                        <p className={styles.lighter_black}>{name}</p>
+                        <p><span className={styles.bolder}>{price}PLN</span></p>
+                        <p className={styles.light_grey_font}>{addInfo}</p>
                     </a>
                 </div>
 
                 <div className={styles.like_btn}>
-                    <button onClick={addToLiked}><img className={styles.like_btn_img} src={isLiked ? "img/icons/red-heart.svg" : "img/icons/void-heart.svg"}></img></button>
+                    <button onClick={() => onLike(obj)}><img className={styles.like_btn_img} src={isClickedLike ? "img/icons/red-heart.svg" : "img/icons/void-heart.svg"}></img></button>
                 </div>
             </div>
         </section>

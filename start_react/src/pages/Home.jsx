@@ -2,7 +2,8 @@ import React from "react"
 import Card from "../components/Card/Card"
 import styles from "../App.module.css"
 
-function Home({searchInput, items, cartItems, onAddToCart}){
+function Home({searchInput, items, cartItems, onAddToCart, onAddToLiked}){
+
     return(
         <>
         <a className={styles.sale_alert} href="#">
@@ -28,6 +29,8 @@ function Home({searchInput, items, cartItems, onAddToCart}){
             key={obj.name}
             cartItems={cartItems}
             cartAddHandler={onAddToCart}
+            obj={obj}
+            onAddToLiked={onAddToLiked}
             {...obj}>
             </Card>
           ))

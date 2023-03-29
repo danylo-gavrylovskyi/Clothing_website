@@ -17,6 +17,10 @@ function App() {
     axios.get("https://63fce95c859df29986c75869.mockapi.io/cart").then(res => {
       setCartItems(res.data)
     })
+
+    axios.get("https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items").then(res => {
+      setLikedItems(res.data)
+    })
   }, [])
 
   const [cartItems, setCartItems] = React.useState([])
@@ -43,17 +47,15 @@ function App() {
   }
 
   const [likedItems, setLikedItems] = React.useState([])
-
-  const onAddToLiked = (obj) => {
-    if (likedItems.find(item => item.id === obj.id)){
-      axios.delete("")
-      setLikedItems(prev => prev.filter(item => item.id !== obj.id))
-    }
-    else{
-      axios.post("")
-      setLikedItems(prev => [...prev, obj])
-    }
-  }
+    const onAddToLiked = async (likedObj) => {
+        if (likedItems.find(item => item.id === likedObj.id)){
+            axios.delete(`https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items/${likedObj.id}`)
+        }
+        else{
+          const {data} = await axios.post("https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items", likedObj)
+          setLikedItems(prev => [...prev, data])
+        }
+      }
 
   return (
     <div className={styles.main_body}>
@@ -85,11 +87,11 @@ function App() {
 
         <Routes>
           <Route path='/' exact element={
-            <Home searchInput={searchInput} items={items} cartItems={cartItems} onAddToCart={onAddToCart}/>}>
+            <Home searchInput={searchInput} items={items} cartItems={cartItems} onAddToCart={onAddToCart} onAddToLiked={onAddToLiked}/>}>
           </Route>
 
           <Route path='/liked' exact element={
-            <Liked searchInput={searchInput} items={items} cartItems={cartItems} onAddToCart={onAddToCart}/>}>
+            <Liked searchInput={searchInput} cartItems={cartItems} onAddToCart={onAddToCart} items={likedItems} onAddToLiked={onAddToLiked}/>}>
           </Route>
         </Routes>
     </div>

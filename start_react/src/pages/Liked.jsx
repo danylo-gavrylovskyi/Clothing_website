@@ -2,7 +2,7 @@ import React from "react"
 import Card from "../components/Card/Card"
 import styles from "../App.module.css"
 
-function Liked({searchInput, items, cartItems, onAddToCart}){
+function Liked({searchInput, items, cartItems, onAddToCart, onAddToLiked}){
     return(
         <>
         <div className={styles.current_category}>
@@ -21,15 +21,12 @@ function Liked({searchInput, items, cartItems, onAddToCart}){
           items.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase())).map(obj => (
             <Card 
             key={obj.name}
-            name={obj.name} 
-            addInfo={obj.addInfo} 
-            price={obj.price} 
-            imageUrl={obj.imageUrl}
-            hoverImgUrl ={obj.hoverImgUrl} 
-            prevCost={obj.prevCost}
             cartItems={cartItems}
             cartAddHandler={onAddToCart}
-            item={obj}>
+            obj={obj}
+            liked={true}
+            onAddToLiked={onAddToLiked}
+            {...obj}>
             </Card>
           ))
         }
