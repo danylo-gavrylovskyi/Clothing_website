@@ -44,6 +44,17 @@ function App() {
 
   const [likedItems, setLikedItems] = React.useState([])
 
+  const onAddToLiked = (obj) => {
+    if (likedItems.find(item => item.id === obj.id)){
+      axios.delete("")
+      setLikedItems(prev => prev.filter(item => item.id !== obj.id))
+    }
+    else{
+      axios.post("")
+      setLikedItems(prev => [...prev, obj])
+    }
+  }
+
   return (
     <div className={styles.main_body}>
       

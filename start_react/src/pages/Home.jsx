@@ -26,15 +26,9 @@ function Home({searchInput, items, cartItems, onAddToCart}){
           items.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase())).map(obj => (
             <Card 
             key={obj.name}
-            name={obj.name} 
-            addInfo={obj.addInfo} 
-            price={obj.price} 
-            imageUrl={obj.imageUrl}
-            hoverImgUrl ={obj.hoverImgUrl} 
-            prevCost={obj.prevCost}
             cartItems={cartItems}
             cartAddHandler={onAddToCart}
-            item={obj}>
+            {...obj}>
             </Card>
           ))
         }
