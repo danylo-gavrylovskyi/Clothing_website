@@ -8,26 +8,30 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   const [items, setItems] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState(true)
 
   React.useEffect(() => {
-    axios.get("https://63fce95c859df29986c75869.mockapi.io/items").then(res => {
-      setItems(res.data)
-    })
-
-    axios.get("https://63fce95c859df29986c75869.mockapi.io/cart").then(res => {
-      setCartItems(res.data)
-    })
-
-    axios.get("https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items").then(res => {
-      setLikedItems(res.data)
-    })
+    async function fetchData(){
+      setIsLoading(true)
+      const itemsResponse = await axios.get("https://63fce95c859df29986c75869.mockapi.io/items")
+      const cartItemsResponse = await axios.get("https://63fce95c859df29986c75869.mockapi.io/cart")
+      const likedItemsResponse = await axios.get("https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items")
+      
+      setIsLoading(false)
+      setCartItems(cartItemsResponse.data)
+      setLikedItems(likedItemsResponse.data)
+      setItems(itemsResponse.data)
+    }
+    fetchData()
   }, [])
 
   const [cartItems, setCartItems] = React.useState([])
 
   function onAddToCart(obj){
-    axios.post("https://63fce95c859df29986c75869.mockapi.io/cart", obj)
-    setCartItems(prev => [...prev, obj])
+    if (!cartItems.find(item => item.id === obj.id)){
+      axios.post("https://63fce95c859df29986c75869.mockapi.io/cart", obj)
+      setCartItems(prev => [...prev, obj])
+    }
   }
 
   function onRemoveFromCart(id){
@@ -48,6 +52,7 @@ function App() {
 
   const [likedItems, setLikedItems] = React.useState([])
     const onAddToLiked = async (likedObj) => {
+      try{
         if (likedItems.find(item => item.id === likedObj.id)){
             axios.delete(`https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items/${likedObj.id}`)
         }
@@ -55,6 +60,10 @@ function App() {
           const {data} = await axios.post("https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items", likedObj)
           setLikedItems(prev => [...prev, data])
         }
+      }
+      catch(error){
+        alert("Error with sending object to backend in onAddToLiked function")
+      }
       }
 
   return (
@@ -87,7 +96,8 @@ function App() {
 
         <Routes>
           <Route path='/' exact element={
-            <Home searchInput={searchInput} items={items} cartItems={cartItems} onAddToCart={onAddToCart} onAddToLiked={onAddToLiked}/>}>
+            <Home searchInput={searchInput} items={items} cartItems={cartItems} onAddToCart={onAddToCart} onAddToLiked={onAddToLiked} likedItems={likedItems}
+            isLoading={isLoading} />}>
           </Route>
 
           <Route path='/liked' exact element={

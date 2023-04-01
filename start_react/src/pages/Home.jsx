@@ -2,8 +2,8 @@ import React from "react"
 import Card from "../components/Card/Card"
 import styles from "../App.module.css"
 
-function Home({searchInput, items, cartItems, onAddToCart, onAddToLiked}){
-
+function Home({searchInput, items, cartItems, onAddToCart, onAddToLiked, likedItems, isLoading}){
+  const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase()))
     return(
         <>
         <a className={styles.sale_alert} href="#">
@@ -24,13 +24,15 @@ function Home({searchInput, items, cartItems, onAddToCart, onAddToLiked}){
 
       <main className={styles.main_grid}>
         {
-          items.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase())).map(obj => (
-            <Card 
-            key={obj.name}
+          (isLoading ? [...Array(8)] : filteredItems).map((obj, index) => (
+            <Card
+            key={isLoading? index : obj.name}
             cartItems={cartItems}
             cartAddHandler={onAddToCart}
             obj={obj}
             onAddToLiked={onAddToLiked}
+            liked={likedItems.some(item => item.id === obj.id)}
+            isLoading={isLoading}
             {...obj}>
             </Card>
           ))
