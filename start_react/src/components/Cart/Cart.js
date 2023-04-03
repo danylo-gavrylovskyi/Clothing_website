@@ -13,7 +13,9 @@ function isCartEmpty(array, onRemove){
         )
     }
     else{
-        return array.map(obj => (
+        return (
+            <>
+            {array.map(obj => (
             <section className={styles.cartItem}>
                 <div className={styles.itemImg}>
                     <img src={obj.imageUrl}></img>
@@ -23,8 +25,16 @@ function isCartEmpty(array, onRemove){
                     <p className={styles.price}>{obj.price}PLN</p>
                     <img onClick={() => onRemove(obj.id)} className={styles.bin} src="img/icons/bin.svg"></img>
                 </div>
-            </section>
-        ))
+            </section>))}
+
+            <div className={styles.payment}>
+                <p className={styles.total}><span>TOTAL</span><span>234,00</span></p>
+                <div className={styles.order_buttons}>
+                    <button className={styles.gpay}><img src="img/icons/dark_gpay.svg"></img></button>
+                    <button className={styles.proc_order}>PROCESS ORDER</button>
+                </div>
+            </div>
+            </>)
     }
 }
 

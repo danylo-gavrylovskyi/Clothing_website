@@ -20,7 +20,6 @@ function Card({imageUrl, hoverImgUrl, cartAddHandler, name, price, addInfo, obj,
     const [isClickedLike, setLiked] = React.useState(liked)
     const onLike = (item) => {
         setLiked(!isClickedLike)
-        console.log(item.id)
         onAddToLiked(item)
     }
 

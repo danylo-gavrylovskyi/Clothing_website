@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import Liked from './pages/Liked';
 import { Routes, Route, Link } from 'react-router-dom';
 
+export const appContext = React.createContext()
+
 function App() {
   const [items, setItems] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
@@ -55,6 +57,7 @@ function App() {
       try{
         if (likedItems.find(item => item.id === likedObj.id)){
             axios.delete(`https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items/${likedObj.id}`)
+            setLikedItems(prev => prev.filter(item => item.id !== likedObj.id))
         }
         else{
           const {data} = await axios.post("https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items", likedObj)
@@ -67,14 +70,16 @@ function App() {
       }
 
   return (
+
+    <appContext.Provider value={{}}>
     <div className={styles.main_body}>
       
-
-      <Link to='/'>
-        <div className={styles.logo}>
+      <div className={styles.logo}>
+        <Link to='/'>
           <img src="img/icons/logo-template.svg"></img>
-        </div>
-      </Link>
+        </Link>
+      </div>
+      
 
       <nav className={styles.navigation}>
             <div className={styles.search}>
@@ -105,7 +110,8 @@ function App() {
           </Route>
         </Routes>
     </div>
-  );
+    </appContext.Provider>
+  )
 }
 
 export default App;
