@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Cart.module.css"
 
-function isCartEmpty(array, onRemove){
+function isCartEmpty(array, onRemove, makeOrder, isOrderLoading){
     if (array.length === 0){
         return(
             <div className={styles.empty_cart_text}>
@@ -31,14 +31,26 @@ function isCartEmpty(array, onRemove){
                 <p className={styles.total}><span>TOTAL</span><span>234,00</span></p>
                 <div className={styles.order_buttons}>
                     <button className={styles.gpay}><img src="img/icons/dark_gpay.svg"></img></button>
-                    <button className={styles.proc_order}>PROCESS ORDER</button>
+                    <button disabled={isOrderLoading} onClick={makeOrder} className={styles.proc_order}>PROCESS ORDER</button>
                 </div>
             </div>
             </>)
     }
 }
 
-function Cart({close, cart = [], onRemove}){
+function ordered(close, orderId, setIsOrdered){
+    return (
+        <div className={styles.empty_cart_text}>
+            <img src="img/icons/shopcart-box.png"></img>
+            <p className={styles.bolder}>Your order #{orderId} has been received</p>
+            <p className={styles.add_info}>You will receive an order confirmation email
+            with details of your order.</p>
+            <button onClick={() => {close(); setIsOrdered(false)}} className={styles.cont_shopping}>CONTINUE SHOPPING</button>
+        </div>
+    )
+}
+
+function Cart({close, cart = [], onRemove, makeOrder, isOrdered, orderId, isOrderLoading, setIsOrdered}){
     return(
         <div className={styles.overlay}>
             <div className={styles.cart}>
@@ -47,7 +59,7 @@ function Cart({close, cart = [], onRemove}){
                     <div className={styles.close_btn}><img onClick={close} className={styles.close_image} src="/img/icons/close.svg"></img></div>
                 </div>
 
-                {isCartEmpty(cart, onRemove)}
+                {isOrdered ? ordered(close, orderId, setIsOrdered) : isCartEmpty(cart, onRemove, makeOrder, isOrderLoading)}
 
             </div>
         </div>

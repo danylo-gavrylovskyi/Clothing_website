@@ -69,8 +69,24 @@ function App() {
       }
       }
 
-  return (
+  const [isOrdered, setIsOrdered] = React.useState(false)
+  const [orderId, setOrderId] = React.useState(null)
+  const [isOrderLoading, setOrderLoading] = React.useState(false)
+  async function makeOrder(){
+    try{
+      setOrderLoading(true)
+      const {data} = await axios.post("https://64248fef7ac292e3cfed5b72.mockapi.io/Orders", {items: cartItems})
+      setOrderId(data.id)
+      setIsOrdered(true)
+      setCartItems([])
+      setOrderLoading(false)
+    }
+    catch(error){
+      alert("Error in makeOrder function")
+    }
+  }
 
+  return (
     <appContext.Provider value={{}}>
     <div className={styles.main_body}>
       
@@ -97,7 +113,7 @@ function App() {
             <img src="img/icons/hamburger-menu.svg"></img>
         </nav>
 
-        {isCartOpened && <Cart cart={cartItems} close={changeCart} onRemove={onRemoveFromCart}></Cart>}
+        {isCartOpened && <Cart setIsOrdered={setIsOrdered} isOrderLoading={isOrderLoading} orderId={orderId} isOrdered={isOrdered} makeOrder={makeOrder} cart={cartItems} close={changeCart} onRemove={onRemoveFromCart}></Cart>}
 
         <Routes>
           <Route path='/' exact element={
