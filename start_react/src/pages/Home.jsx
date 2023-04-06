@@ -2,7 +2,7 @@ import React from "react"
 import Card from "../components/Card/Card"
 import styles from "../App.module.css"
 
-function Home({searchInput, items, cartItems, onAddToCart, onAddToLiked, likedItems, isLoading}){
+function Home({searchInput, items, onAddToCart, onAddToLiked, likedItems, isLoading}){
   const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase()))
     return(
         <>
@@ -27,7 +27,6 @@ function Home({searchInput, items, cartItems, onAddToCart, onAddToLiked, likedIt
           (isLoading ? [...Array(8)] : filteredItems).map((obj, index) => (
             <Card
             key={isLoading? index : obj.name}
-            cartItems={cartItems}
             cartAddHandler={onAddToCart}
             obj={obj}
             onAddToLiked={onAddToLiked}

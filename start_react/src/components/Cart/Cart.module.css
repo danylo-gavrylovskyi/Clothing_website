@@ -1,5 +1,4 @@
 .cart{
-    overflow: auto;
     height: 100%;
     width: 320px;
     position: fixed;
@@ -115,10 +114,12 @@
 }
 
 .payment{
-    width: 100%;
+    position: fixed;
+    bottom: 0;
+    width: 320px;
     height: 130px;
-    position: absolute;
-    bottom: 0%;
+    background-color: white;
+    z-index: 110;
     border-top: 1px solid transparent;
     border-radius: 15px;
     box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
@@ -129,19 +130,21 @@
 .total{
     display: flex;
     justify-content: space-between;
-    margin-right: 14px;
     margin-left: 14px;
+    margin-right: 14px;
+    margin-top: 15px;
     font-weight: 500;
     font-size: 18px;
-    margin-top: 20px;
 }
 
 .gpay{
+    display: inline-block;
     background-color: black;
     cursor: pointer;
     border: 1px solid black;
     border-radius: 7px;
-    width: 140px;
+    width: 130px;
+    height: 60px;
     transition: all 0.15s;
 }
 
@@ -156,10 +159,11 @@
 }
 
 .proc_order{
+    display: inline-block;
     cursor: pointer;
     border: 1px solid #5DC99D;
     border-radius: 7px;
-    width: 140px;
+    width: 130px;
     height: 60px;
     background-color: #5DC99D;
     color: white;
@@ -176,14 +180,6 @@
 .proc_order:disabled{
     color: #bebebe;
     animation: button-loading 0.6s ease-in-out infinite;
-}
-
-.order_buttons{
-    display: flex;
-    justify-content: space-between;
-    margin-right: 14px;
-    margin-left: 14px;
-    margin-top: 14px;
 }
 
 .cont_shopping{
@@ -214,4 +210,17 @@
     100%{
         opacity: 1;
     }
+}
+
+.scroll{
+    overflow: auto;
+    height: 70%;
+}
+
+.order_btns{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: 20px;
 }

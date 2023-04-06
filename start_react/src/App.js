@@ -4,6 +4,7 @@ import axios from 'axios'
 import Cart from './components/Cart/Cart';
 import Home from './pages/Home'
 import Liked from './pages/Liked';
+import { Orders } from './pages/Orders';
 import { Routes, Route, Link } from 'react-router-dom';
 
 export const appContext = React.createContext()
@@ -102,7 +103,9 @@ function App() {
               <img className={styles.magnifying_glass} src="img/icons/magnifying-glass.svg"></img>
               <input onChange={onChangeSearchInput} type="text" placeholder='SEARCH'></input>
             </div>
-            <a className={styles.icons}><img src="img/icons/user.svg"></img></a>
+            <Link to='/orders'>
+              <div className={styles.icons}><img src="img/icons/user.svg"></img></div>
+            </Link>
             <Link to='/liked'>
               <div className={styles.icons}><img src="img/icons/heart-fill.svg"></img></div>
             </Link>
@@ -124,6 +127,8 @@ function App() {
           <Route path='/liked' exact element={
             <Liked searchInput={searchInput} cartItems={cartItems} onAddToCart={onAddToCart} items={likedItems} onAddToLiked={onAddToLiked}/>}>
           </Route>
+
+          <Route path='/orders' exact element={<Orders searchInput={searchInput}></Orders>}></Route>
         </Routes>
     </div>
     </appContext.Provider>

@@ -167,3 +167,10 @@ textarea:focus, input:focus{
 .hamburger_menu img{
   width: 100%;
 }
+
+.order_num{
+  margin-left: 51px;
+  font-size: 25px;
+  font-weight: 500;
+  margin-top: 20px;
+}

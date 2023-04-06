@@ -15,21 +15,23 @@ function isCartEmpty(array, onRemove, makeOrder, isOrderLoading){
     else{
         return (
             <>
+            <div className={styles.scroll}>
             {array.map(obj => (
-            <section className={styles.cartItem}>
-                <div className={styles.itemImg}>
-                    <img src={obj.imageUrl}></img>
-                </div>
-                <div className={styles.margin_left}>
-                    <p>{obj.name}</p>
-                    <p className={styles.price}>{obj.price}PLN</p>
-                    <img onClick={() => onRemove(obj.id)} className={styles.bin} src="img/icons/bin.svg"></img>
-                </div>
-            </section>))}
+                <section className={styles.cartItem}>
+                    <div className={styles.itemImg}>
+                        <img src={obj.imageUrl}></img>
+                    </div>
+                    <div className={styles.margin_left}>
+                        <p>{obj.name}</p>
+                        <p className={styles.price}>{obj.price}PLN</p>
+                        <img onClick={() => onRemove(obj.id)} className={styles.bin} src="img/icons/bin.svg"></img>
+                    </div>
+                </section>))}
+            </div>
 
             <div className={styles.payment}>
-                <p className={styles.total}><span>TOTAL</span><span>234,00</span></p>
-                <div className={styles.order_buttons}>
+                <div className={styles.total}><span>TOTAL</span><span>234,00</span></div>
+                <div className={styles.order_btns}>
                     <button className={styles.gpay}><img src="img/icons/dark_gpay.svg"></img></button>
                     <button disabled={isOrderLoading} onClick={makeOrder} className={styles.proc_order}>PROCESS ORDER</button>
                 </div>
