@@ -2,6 +2,7 @@ import styles from './App.module.css';
 import React from 'react';
 import axios from 'axios'
 import Cart from './components/Cart/Cart';
+import {Navigation} from './components/Navigation/Navigation'
 import Home from './pages/Home'
 import Liked from './pages/Liked';
 import { Orders } from './pages/Orders';
@@ -73,6 +74,9 @@ function App() {
   const [isOrdered, setIsOrdered] = React.useState(false)
   const [orderId, setOrderId] = React.useState(null)
   const [isOrderLoading, setOrderLoading] = React.useState(false)
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
   async function makeOrder(){
     try{
       setOrderLoading(true)
@@ -80,11 +84,22 @@ function App() {
       setOrderId(data.id)
       setIsOrdered(true)
       setCartItems([])
+      for (let index = 0; index < cartItems.length; index++) {
+        const item = cartItems[index]
+        console.log(item.id)
+        await axios.delete(`https://63fce95c859df29986c75869.mockapi.io/cart/${item.id}`)
+        await delay(1000)
+      }
       setOrderLoading(false)
     }
     catch(error){
       alert("Error in makeOrder function")
     }
+  }
+
+  const [isMenuClicked, setMenuClick] = React.useState(false)
+  const onMenuClick = () => {
+    setMenuClick(!isMenuClicked)
   }
 
   return (
@@ -113,9 +128,10 @@ function App() {
         </nav>
         
         <nav className={styles.hamburger_menu}>
-            <img src="img/icons/hamburger-menu.svg"></img>
+            <img onClick={onMenuClick} src="img/icons/hamburger-menu.svg"></img>
         </nav>
 
+        {isMenuClicked && <Navigation></Navigation>}
         {isCartOpened && <Cart setIsOrdered={setIsOrdered} isOrderLoading={isOrderLoading} orderId={orderId} isOrdered={isOrdered} makeOrder={makeOrder} cart={cartItems} close={changeCart} onRemove={onRemoveFromCart}></Cart>}
 
         <Routes>

@@ -4,6 +4,12 @@ import styles from "../App.module.css"
 
 function Home({searchInput, items, onAddToCart, onAddToLiked, likedItems, isLoading}){
   const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase()))
+
+  const [isSeeTwoClicked, setSeeTwoCliked] = React.useState(false)
+  const seeTwoClick = () => {
+    setSeeTwoCliked(!isSeeTwoClicked)
+  }
+
     return(
         <>
         <a className={styles.sale_alert} href="#">
@@ -17,12 +23,12 @@ function Home({searchInput, items, onAddToCart, onAddToLiked, likedItems, isLoad
             </div>
 
             <div className={styles.filter_buttons}>
-                <button className={styles.see}>See 2</button>
+                <button onClick={seeTwoClick} className={styles.see}>{isSeeTwoClicked ? "See 4" : "See 2"}</button>
                 <button className={styles.filter}>Filter</button>
             </div>
         </div>
 
-      <main className={styles.main_grid}>
+      <main className={isSeeTwoClicked ? styles.see_two_grid : styles.main_grid}>
         {
           (isLoading ? [...Array(8)] : filteredItems).map((obj, index) => (
             <Card

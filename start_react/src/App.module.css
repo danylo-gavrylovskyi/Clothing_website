@@ -24,6 +24,16 @@ a{
   column-gap: 14px;
 }
 
+.see_two_grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+  margin-left: 300px;
+  margin-right: 300px;
+  row-gap: 10px;
+  column-gap: 14px;
+}
+
 .logo{
   padding-top: 70px;
   display: flex;

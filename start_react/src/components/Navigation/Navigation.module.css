@@ -1,0 +1,59 @@
+.menu{
+    background-color: white;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 60%;
+}
+
+.select_gender{
+    position: fixed;
+    left: 40px;
+    right: 0px;
+    top: 30px;
+    color: #686868;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.select-gender span{
+    margin-right: 10px;
+}
+
+.bottom_categories{
+    margin-left: 40px;
+    margin-top: 420px;
+    font-size: 15px;
+    line-height: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.selected-gender-font{
+    font-weight: 500;
+    color: black;
+}
+
+#vertical-line{
+    font-size: 28px;
+    color: black;
+    padding-bottom: 4px;
+}
+
+.bold_menu_font{
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.selected_gender_font{
+    font-weight: 500;
+    color: black;
+}
+
+.red_font{
+    color: red;
+    font-weight: 600;
+}
