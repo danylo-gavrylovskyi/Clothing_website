@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Cart.module.css"
 
-function isCartEmpty(array, onRemove, makeOrder, isOrderLoading){
+function isCartEmpty(array, onRemove, makeOrder, isOrderLoading, cartCost){
     if (array.length === 0){
         return(
             <div className={styles.empty_cart_text}>
@@ -30,7 +30,7 @@ function isCartEmpty(array, onRemove, makeOrder, isOrderLoading){
             </div>
 
             <div className={styles.payment}>
-                <div className={styles.total}><span>TOTAL</span><span>234,00</span></div>
+                <div className={styles.total}><span>TOTAL</span><span>{cartCost}</span></div>
                 <div className={styles.order_btns}>
                     <button className={styles.gpay}><img src="img/icons/dark_gpay.svg"></img></button>
                     <button disabled={isOrderLoading} onClick={makeOrder} className={styles.proc_order}>PROCESS ORDER</button>
@@ -53,6 +53,10 @@ function ordered(close, orderId, setIsOrdered){
 }
 
 function Cart({close, cart = [], onRemove, makeOrder, isOrdered, orderId, isOrderLoading, setIsOrdered}){
+
+    const cartCost = cart.reduce((total, curItem) => Number(curItem.price) + total, 0)
+    console.log(cartCost)
+
     return(
         <div className={styles.overlay}>
             <div className={styles.cart}>
@@ -61,7 +65,7 @@ function Cart({close, cart = [], onRemove, makeOrder, isOrdered, orderId, isOrde
                     <div className={styles.close_btn}><img onClick={close} className={styles.close_image} src="/img/icons/close.svg"></img></div>
                 </div>
 
-                {isOrdered ? ordered(close, orderId, setIsOrdered) : isCartEmpty(cart, onRemove, makeOrder, isOrderLoading)}
+                {isOrdered ? ordered(close, orderId, setIsOrdered) : isCartEmpty(cart, onRemove, makeOrder, isOrderLoading, cartCost)}
 
             </div>
         </div>

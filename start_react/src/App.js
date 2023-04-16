@@ -127,11 +127,11 @@ function App() {
             <div className={styles.icons} onClick={changeCart}><img src="img/icons/bag-outline.svg"></img></div>
         </nav>
         
-        <nav className={styles.hamburger_menu}>
-            <img onClick={onMenuClick} src="img/icons/hamburger-menu.svg"></img>
+        <nav onMouseEnter={() => setMenuClick(true)} className={styles.hamburger_menu}>
+            <img src="img/icons/hamburger-menu.svg"></img>
         </nav>
 
-        {isMenuClicked && <Navigation></Navigation>}
+        {isMenuClicked && <Navigation setMenuClick={setMenuClick}></Navigation>}
         {isCartOpened && <Cart setIsOrdered={setIsOrdered} isOrderLoading={isOrderLoading} orderId={orderId} isOrdered={isOrdered} makeOrder={makeOrder} cart={cartItems} close={changeCart} onRemove={onRemoveFromCart}></Cart>}
 
         <Routes>

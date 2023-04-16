@@ -4,7 +4,8 @@
     height: 100%;
     top: 0;
     left: 0;
-    width: 60%;
+    width: 40%;
+    z-index: 100;
 }
 
 .select_gender{
@@ -32,20 +33,32 @@
     display: inline-block;
 }
 
+.bottom_categories p:hover{
+    font-weight: 600;
+}
+
 .selected-gender-font{
     font-weight: 500;
     color: black;
 }
 
-#vertical-line{
+.vertical_line{
     font-size: 28px;
     color: black;
     padding-bottom: 4px;
 }
 
-.bold_menu_font{
-    font-weight: bold;
+.category_font{
+    font-weight: 400;
     padding-top: 10px;
+}
+
+.category_font span{
+    cursor: pointer;
+}
+
+.category_font span:hover{
+    font-weight: 600;
 }
 
 .selected_gender_font{
@@ -55,5 +68,21 @@
 
 .red_font{
     color: red;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.red_font:hover{
     font-weight: 600;
+}
+
+.categories{
+    position: fixed;
+    top: 90px;
+    left: 40px;
+    font-size: 25px;
+}
+
+.subcategory{
+    
 }
