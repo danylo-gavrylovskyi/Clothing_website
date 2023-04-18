@@ -52,14 +52,14 @@ function ordered(close, orderId, setIsOrdered){
     )
 }
 
-function Cart({close, cart = [], onRemove, makeOrder, isOrdered, orderId, isOrderLoading, setIsOrdered}){
+function Cart({close, cart = [], onRemove, makeOrder, isOrdered, orderId, isOrderLoading, setIsOrdered, isOpened}){
 
     const cartCost = cart.reduce((total, curItem) => Number(curItem.price) + total, 0)
     console.log(cartCost)
 
     return(
-        <div className={styles.overlay}>
-            <div className={styles.cart}>
+        <div className={`${styles.overlay} ${isOpened ? styles.visible : styles.invisible}`}>
+            <div className={`${styles.cart} ${isOpened ? styles.open : styles.hide}`}>
                 <div className={styles.header}>
                     <div className={styles.bag_title}>SHOPPING BAG<img src="img/icons/bag-outline.svg"></img></div>
                     <div className={styles.close_btn}><img onClick={close} className={styles.close_image} src="/img/icons/close.svg"></img></div>

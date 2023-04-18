@@ -1,12 +1,14 @@
-import styles from './App.module.css';
 import React from 'react';
 import axios from 'axios'
+
 import Cart from './components/Cart/Cart';
 import {Navigation} from './components/Navigation/Navigation'
 import Home from './pages/Home'
 import Liked from './pages/Liked';
 import { Orders } from './pages/Orders';
 import { Routes, Route, Link } from 'react-router-dom';
+
+import styles from './App.module.css';
 
 export const appContext = React.createContext()
 
@@ -98,9 +100,6 @@ function App() {
   }
 
   const [isMenuClicked, setMenuClick] = React.useState(false)
-  const onMenuClick = () => {
-    setMenuClick(!isMenuClicked)
-  }
 
   return (
     <appContext.Provider value={{}}>
@@ -132,7 +131,7 @@ function App() {
         </nav>
 
         {isMenuClicked && <Navigation setMenuClick={setMenuClick}></Navigation>}
-        {isCartOpened && <Cart setIsOrdered={setIsOrdered} isOrderLoading={isOrderLoading} orderId={orderId} isOrdered={isOrdered} makeOrder={makeOrder} cart={cartItems} close={changeCart} onRemove={onRemoveFromCart}></Cart>}
+        <Cart setIsOrdered={setIsOrdered} isOrderLoading={isOrderLoading} orderId={orderId} isOrdered={isOrdered} makeOrder={makeOrder} cart={cartItems} close={changeCart} onRemove={onRemoveFromCart} isOpened={isCartOpened}></Cart>
 
         <Routes>
           <Route path='/' exact element={
