@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styles from './Navigation.module.css'
 
 export function Navigation({setMenuClick}){

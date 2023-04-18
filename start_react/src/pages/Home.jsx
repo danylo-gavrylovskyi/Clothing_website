@@ -1,8 +1,10 @@
 import React from "react"
-import Card from "../components/Card/Card"
+
+import { Card } from "../components/Card/Card"
+
 import styles from "../App.module.css"
 
-function Home({searchInput, items, onAddToCart, onAddToLiked, likedItems, isLoading}){
+export function Home({searchInput, items, onAddToCart, onAddToLiked, likedItems, isLoading}){
   const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase()))
 
   const [isSeeTwoClicked, setSeeTwoCliked] = React.useState(false)
@@ -46,5 +48,3 @@ function Home({searchInput, items, onAddToCart, onAddToLiked, likedItems, isLoad
       </>
     )
 }
-
-export default Home

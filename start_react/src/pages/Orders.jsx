@@ -1,7 +1,9 @@
 import React from "react"
 import axios from "axios"
+
+import { Card } from "../components/Card/Card"
+
 import styles from "../App.module.css"
-import Card from "../components/Card/Card"
 
 export function Orders({searchInput}){
 

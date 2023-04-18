@@ -1,4 +1,5 @@
 import React from "react";
+
 import styles from "./Cart.module.css"
 
 function isCartEmpty(array, onRemove, makeOrder, isOrderLoading, cartCost){
@@ -52,7 +53,7 @@ function ordered(close, orderId, setIsOrdered){
     )
 }
 
-function Cart({close, cart = [], onRemove, makeOrder, isOrdered, orderId, isOrderLoading, setIsOrdered, isOpened}){
+export function Cart({close, cart = [], onRemove, makeOrder, isOrdered, orderId, isOrderLoading, setIsOrdered, isOpened}){
 
     const cartCost = cart.reduce((total, curItem) => Number(curItem.price) + total, 0)
     console.log(cartCost)
@@ -71,5 +72,3 @@ function Cart({close, cart = [], onRemove, makeOrder, isOrdered, orderId, isOrde
         </div>
     )
 }
-
-export default Cart

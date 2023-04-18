@@ -1,8 +1,10 @@
 import React from "react"
-import Card from "../components/Card/Card"
+
+import { Card } from "../components/Card/Card"
+
 import styles from "../App.module.css"
 
-function Liked({searchInput, items, cartItems, onAddToCart, onAddToLiked}){
+export function Liked({searchInput, items, cartItems, onAddToCart, onAddToLiked}){
     return(
         <>
         <div className={styles.current_category}>
@@ -34,5 +36,3 @@ function Liked({searchInput, items, cartItems, onAddToCart, onAddToLiked}){
       </>
     )
 }
-
-export default Liked

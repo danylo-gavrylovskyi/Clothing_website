@@ -1,8 +1,9 @@
 import React from "react";
-import styles from './Card.module.css';
 import ContentLoader from "react-content-loader"; 
 
-function Card({imageUrl, hoverImgUrl, cartAddHandler, name, price, addInfo, obj, liked=false, onAddToLiked, isLoading}){
+import styles from './Card.module.css';
+
+export function Card({imageUrl, hoverImgUrl, cartAddHandler, name, price, addInfo, obj, liked=false, onAddToLiked, isLoading}){
     const [onImage, setOnImage] = React.useState(false)
 
     function isHovered(){
@@ -77,5 +78,3 @@ function Card({imageUrl, hoverImgUrl, cartAddHandler, name, price, addInfo, obj,
         </>
     )
 }
-
-export default Card

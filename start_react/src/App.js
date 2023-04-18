@@ -1,48 +1,65 @@
 import React from 'react';
 import axios from 'axios'
 
-import Cart from './components/Cart/Cart';
-import {Navigation} from './components/Navigation/Navigation'
-import Home from './pages/Home'
-import Liked from './pages/Liked';
+import { Cart } from './components/Cart/Cart';
+import { Navigation } from './components/Navigation/Navigation'
+import { Home } from './pages/Home'
+import { Liked } from './pages/Liked';
 import { Orders } from './pages/Orders';
 import { Routes, Route, Link } from 'react-router-dom';
 
 import styles from './App.module.css';
 
-export const appContext = React.createContext()
-
-function App() {
+export function App() {
   const [items, setItems] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
 
   React.useEffect(() => {
     async function fetchData(){
-      setIsLoading(true)
-      const itemsResponse = await axios.get("https://63fce95c859df29986c75869.mockapi.io/items")
-      const cartItemsResponse = await axios.get("https://63fce95c859df29986c75869.mockapi.io/cart")
-      const likedItemsResponse = await axios.get("https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items")
-      
-      setIsLoading(false)
-      setCartItems(cartItemsResponse.data)
-      setLikedItems(likedItemsResponse.data)
-      setItems(itemsResponse.data)
+      try {
+        setIsLoading(true)
+        const itemsResponse = await axios.get("https://63fce95c859df29986c75869.mockapi.io/items")
+        const cartItemsResponse = await axios.get("https://63fce95c859df29986c75869.mockapi.io/cart")
+        const likedItemsResponse = await axios.get("https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items")
+        
+        setIsLoading(false)
+        setCartItems(cartItemsResponse.data)
+        setLikedItems(likedItemsResponse.data)
+        setItems(itemsResponse.data)
+      }
+      catch(error){
+        alert("Error when getting data from db on first render")
+        console.log(error)
+      }
     }
+
     fetchData()
   }, [])
 
   const [cartItems, setCartItems] = React.useState([])
 
-  function onAddToCart(obj){
-    if (!cartItems.find(item => item.id === obj.id)){
-      axios.post("https://63fce95c859df29986c75869.mockapi.io/cart", obj)
-      setCartItems(prev => [...prev, obj])
+  async function onAddToCart(obj){
+    try{
+      if (!cartItems.find(item => item.id === obj.id)){
+        await axios.post("https://63fce95c859df29986c75869.mockapi.io/cart", obj)
+        setCartItems(prev => [...prev, obj])
+      }
+    }
+    catch(error){
+      alert("Error on adding item to cart")
+      console.log(error)
     }
   }
 
-  function onRemoveFromCart(id){
-    axios.delete(`https://63fce95c859df29986c75869.mockapi.io/cart/${id}`)
-    setCartItems(prev => prev.filter(item => item.id !== id))
+  async function onRemoveFromCart(id){
+    try{
+      await axios.delete(`https://63fce95c859df29986c75869.mockapi.io/cart/${id}`)
+      setCartItems(prev => prev.filter(item => item.id !== id))
+    }
+    catch(error){
+      alert("Error when removing item from cart")
+      console.log(error)
+    }
   }
 
   const [isCartOpened, setCart] = React.useState(false)
@@ -70,6 +87,7 @@ function App() {
       }
       catch(error){
         alert("Error with sending object to backend in onAddToLiked function")
+        console.log(error)
       }
       }
 
@@ -96,13 +114,13 @@ function App() {
     }
     catch(error){
       alert("Error in makeOrder function")
+      console.log(error)
     }
   }
 
   const [isMenuClicked, setMenuClick] = React.useState(false)
 
   return (
-    <appContext.Provider value={{}}>
     <div className={styles.main_body}>
       
       <div className={styles.logo}>
@@ -146,8 +164,5 @@ function App() {
           <Route path='/orders' exact element={<Orders searchInput={searchInput}></Orders>}></Route>
         </Routes>
     </div>
-    </appContext.Provider>
   )
 }
-
-export default App;
