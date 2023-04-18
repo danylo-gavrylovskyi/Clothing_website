@@ -26,7 +26,7 @@
 
 .bottom_categories{
     margin-left: 40px;
-    margin-top: 420px;
+    margin-top: 65%;
     font-size: 15px;
     line-height: 25px;
     cursor: pointer;
@@ -49,16 +49,18 @@
 }
 
 .category_font{
-    font-weight: 400;
-    padding-top: 10px;
+    font-weight: 600;
+    padding-top: 15px;
 }
 
 .category_font span{
     cursor: pointer;
+    display: block;
+    margin-top: 4%;
 }
 
 .category_font span:hover{
-    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .selected_gender_font{
@@ -78,11 +80,30 @@
 
 .categories{
     position: fixed;
-    top: 90px;
+    top: 12%;
     left: 40px;
     font-size: 25px;
 }
 
 .subcategory{
-    
+    position: fixed;
+    left: 22%;
+    top: 16%;
+    font-size: 13px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.bottom_border_line{
+    display: inline-block;
+    width: 170px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.subcategory p{
+    padding-top: 7px;
+}
+
+.subcategory p:hover{
+    font-weight: 600;
 }
