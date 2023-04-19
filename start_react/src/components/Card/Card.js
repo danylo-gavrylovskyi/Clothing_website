@@ -42,8 +42,8 @@ export function Card({imageUrl, hoverImgUrl, cartAddHandler, name, price, addInf
               </ContentLoader> : <section className={styles.item}>
               <div className={styles.item_img}>
               <div onMouseEnter={isHovered} onMouseLeave={isHovered}>
-                  <img src={imageUrl} ></img>
-                  {onImage && <img className={styles.hover_img} src={hoverImgUrl}></img>}
+                  <img alt="item" src={imageUrl} ></img>
+                  {onImage && <img className={styles.hover_img} alt="item-back" src={hoverImgUrl}></img>}
                   <div className={styles.sale}>-30%</div>
 
                   {onImage &&
@@ -55,7 +55,7 @@ export function Card({imageUrl, hoverImgUrl, cartAddHandler, name, price, addInf
                           <p onClick={() => {setSize("L"); showSizes()}}>L</p>
                           <p onClick={() => {setSize("XL"); showSizes()}}>XL</p>
                       </div>}
-                      <p className={styles.choosed_option} onMouseEnter={showSizes}> {size} <img src="img/icons/down_arrow.svg"></img></p>
+                      <p className={styles.choosed_option} onMouseEnter={showSizes}> {size} <img alt="down-arrow" src="img/icons/down_arrow.svg"></img></p>
                       <button className={styles.add_to_cart} onClick={() => cartAddHandler(obj)}>ADD</button>
                   </div>}
               </div>
@@ -63,15 +63,15 @@ export function Card({imageUrl, hoverImgUrl, cartAddHandler, name, price, addInf
 
           <div className={styles.grid_under_image}>
               <div className={styles.description}>
-                  <a href="#">
+                  <div>
                       <p className={styles.lighter_black}>{name}</p>
                       <p><span className={styles.bolder}>{price}PLN</span></p>
                       <p className={styles.light_grey_font}>{addInfo}</p>
-                  </a>
+                  </div>
               </div>
 
               <div className={styles.like_btn}>
-                  <button onClick={() => onLike(obj)}><img className={styles.like_btn_img} src={isClickedLike ? "img/icons/red-heart.svg" : "img/icons/void-heart.svg"}></img></button>
+                  <button onClick={() => onLike(obj)}><img className={styles.like_btn_img} alt="heart" src={isClickedLike ? "img/icons/red-heart.svg" : "img/icons/void-heart.svg"}></img></button>
               </div>
           </div></section>
             }

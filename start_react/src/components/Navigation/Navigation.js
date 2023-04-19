@@ -33,9 +33,9 @@ export function Navigation({setMenuClick}){
     return (
         <nav onMouseLeave={() => setMenuClick(false)} className={styles.menu}>
             <div className={styles.select_gender}>
-                <span onClick={switchGender} className={!isManPicked && styles.selected_gender_font}>WOMAN</span>
+                <span onClick={switchGender} className={!isManPicked ? styles.selected_gender_font : ""}>WOMAN</span>
                 <span className={styles.vertical_line}>|</span>
-                <span onClick={switchGender} className={isManPicked && styles.selected_gender_font}>MAN</span>
+                <span onClick={switchGender} className={isManPicked ? styles.selected_gender_font : ""}>MAN</span>
             </div>
 
             <div className={styles.categories}>
@@ -55,7 +55,7 @@ export function Navigation({setMenuClick}){
             <div className={styles.subcategory}>
                 <p className={styles.red_font}>Sale favourites</p>
                 <p>Best sellers &#10084;</p>
-                <p class={styles.bottom_border_line}></p>
+                <p className={styles.bottom_border_line}></p>
                 <p>Jeans</p>
                 <p>Trousers</p>
                 <p>Cargo & parachute</p>

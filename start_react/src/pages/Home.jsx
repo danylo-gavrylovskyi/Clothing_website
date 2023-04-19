@@ -12,14 +12,12 @@ export function Home({searchInput, items, onAddToCart, onAddToLiked, likedItems,
     setSeeTwoCliked(!isSeeTwoClicked)
   }
 
-  console.log(likedItems)
-
     return(
         <>
-        <a className={styles.sale_alert} href="#">
+        <div className={styles.sale_alert}>
         Sale: <>&nbsp;</><span className={styles.bolder}>UP TO -50%!</span> Free store delivery
         and free returns.. <span className={styles.underlined}>SHOP!</span>
-        </a>
+        </div>
 
         <div className={styles.current_category}>
             <div>

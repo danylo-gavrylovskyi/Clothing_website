@@ -40,7 +40,8 @@ export function App() {
 
   async function onAddToCart(obj){
     try{
-      if (!cartItems.find(item => item.parentId === obj.parentId)){
+      const findItem = cartItems.find(item => Number(item.parentId) === Number(obj.id))
+      if (!findItem){
         await axios.post("https://63fce95c859df29986c75869.mockapi.io/cart", obj)
         setCartItems(prev => [...prev, obj])
       }
@@ -51,10 +52,15 @@ export function App() {
     }
   }
 
-  async function onRemoveFromCart(id){
+  async function onRemoveFromCart(obj){
+    const {data} = await axios.get("https://63fce95c859df29986c75869.mockapi.io/cart")
+    setCartItems(data)
+    const deletedItem = data.find(item => Number(item.parentId) === Number(obj.parentId))
     try{
-      setCartItems(prev => prev.filter(item => item.id !== id))
-      await axios.delete(`https://63fce95c859df29986c75869.mockapi.io/cart/${id}`)
+      if (deletedItem){
+        setCartItems(prev => prev.filter(item => Number(item.parentId) !== Number(obj.parentId)))
+        await axios.delete(`https://63fce95c859df29986c75869.mockapi.io/cart/${deletedItem.id}`)
+      }
     }
     catch(error){
       alert("Error when removing item from cart")
@@ -75,9 +81,10 @@ export function App() {
 
   const [likedItems, setLikedItems] = React.useState([])
     const onAddToLiked = async (likedObj) => {
+      const likedItem = likedItems.find(obj => obj.parentId === likedObj.parentId)
       try{
-        if (likedItems.find(item => item.parentId === likedObj.parentId)){
-          axios.delete(`https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items/${likedObj.id}`)
+        if (likedItem){
+          axios.delete(`https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items/${likedItem.id}`)
           setLikedItems(prev => prev.filter(item => item.parentId !== likedObj.parentId))
         }
         else{
@@ -89,6 +96,7 @@ export function App() {
         alert("Error with sending object to backend in onAddToLiked function")
         console.log(error)
       }
+      console.log(likedItems)
       }
 
   const [isOrdered, setIsOrdered] = React.useState(false)
@@ -106,7 +114,6 @@ export function App() {
       setCartItems([])
       for (let index = 0; index < cartItems.length; index++) {
         const item = cartItems[index]
-        console.log(item.id)
         await axios.delete(`https://63fce95c859df29986c75869.mockapi.io/cart/${item.id}`)
         await delay(1000)
       }
@@ -125,27 +132,27 @@ export function App() {
       
       <div className={styles.logo}>
         <Link to='/'>
-          <img src="img/icons/logo-template.svg"></img>
+          <img alt="logo" src="img/icons/logo-template.svg"></img>
         </Link>
       </div>
       
 
       <nav className={styles.navigation}>
             <div className={styles.search}>
-              <img className={styles.magnifying_glass} src="img/icons/magnifying-glass.svg"></img>
+              <img className={styles.magnifying_glass} alt="magnifying-glass" src="img/icons/magnifying-glass.svg"></img>
               <input onChange={onChangeSearchInput} type="text" placeholder='SEARCH'></input>
             </div>
             <Link to='/orders'>
-              <div className={styles.icons}><img src="img/icons/user.svg"></img></div>
+              <div className={styles.icons}><img alt="user" src="img/icons/user.svg"></img></div>
             </Link>
             <Link to='/liked'>
-              <div className={styles.icons}><img src="img/icons/heart-fill.svg"></img></div>
+              <div className={styles.icons}><img alt="liked-items" src="img/icons/heart-fill.svg"></img></div>
             </Link>
-            <div className={styles.icons} onClick={changeCart}><img src="img/icons/bag-outline.svg"></img></div>
+            <div className={styles.icons} onClick={changeCart}><img alt="bag" src="img/icons/bag-outline.svg"></img></div>
         </nav>
         
         <nav onMouseEnter={() => setMenuClick(true)} className={styles.hamburger_menu}>
-            <img src="img/icons/hamburger-menu.svg"></img>
+            <img alt="menu" src="img/icons/hamburger-menu.svg"></img>
         </nav>
 
         {isMenuClicked && <Navigation setMenuClick={setMenuClick}></Navigation>}
