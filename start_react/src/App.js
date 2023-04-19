@@ -40,7 +40,7 @@ export function App() {
 
   async function onAddToCart(obj){
     try{
-      if (!cartItems.find(item => item.id === obj.id)){
+      if (!cartItems.find(item => item.parentId === obj.parentId)){
         await axios.post("https://63fce95c859df29986c75869.mockapi.io/cart", obj)
         setCartItems(prev => [...prev, obj])
       }
@@ -53,8 +53,8 @@ export function App() {
 
   async function onRemoveFromCart(id){
     try{
-      await axios.delete(`https://63fce95c859df29986c75869.mockapi.io/cart/${id}`)
       setCartItems(prev => prev.filter(item => item.id !== id))
+      await axios.delete(`https://63fce95c859df29986c75869.mockapi.io/cart/${id}`)
     }
     catch(error){
       alert("Error when removing item from cart")
@@ -76,9 +76,9 @@ export function App() {
   const [likedItems, setLikedItems] = React.useState([])
     const onAddToLiked = async (likedObj) => {
       try{
-        if (likedItems.find(item => item.id === likedObj.id)){
-            axios.delete(`https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items/${likedObj.id}`)
-            setLikedItems(prev => prev.filter(item => item.id !== likedObj.id))
+        if (likedItems.find(item => item.parentId === likedObj.parentId)){
+          axios.delete(`https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items/${likedObj.id}`)
+          setLikedItems(prev => prev.filter(item => item.parentId !== likedObj.parentId))
         }
         else{
           const {data} = await axios.post("https://64248fef7ac292e3cfed5b72.mockapi.io/Liked_items", likedObj)

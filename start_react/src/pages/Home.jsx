@@ -12,6 +12,8 @@ export function Home({searchInput, items, onAddToCart, onAddToLiked, likedItems,
     setSeeTwoCliked(!isSeeTwoClicked)
   }
 
+  console.log(likedItems)
+
     return(
         <>
         <a className={styles.sale_alert} href="#">
@@ -36,12 +38,12 @@ export function Home({searchInput, items, onAddToCart, onAddToLiked, likedItems,
             <Card
             key={isLoading? index : obj.name}
             cartAddHandler={onAddToCart}
-            obj={obj}
             onAddToLiked={onAddToLiked}
-            liked={likedItems.some(item => item.id === obj.id)}
+            obj={obj}
+            liked={likedItems.some(item => Number(item.parentId) === Number(obj.id))}
             isLoading={isLoading}
             {...obj}>
-            </Card>
+            </Card> 
           ))
         }
       </main>

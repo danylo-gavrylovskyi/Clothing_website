@@ -56,7 +56,6 @@ function ordered(close, orderId, setIsOrdered){
 export function Cart({close, cart = [], onRemove, makeOrder, isOrdered, orderId, isOrderLoading, setIsOrdered, isOpened}){
 
     const cartCost = cart.reduce((total, curItem) => Number(curItem.price) + total, 0)
-    console.log(cartCost)
 
     return(
         <div className={`${styles.overlay} ${isOpened ? styles.visible : styles.invisible}`}>
