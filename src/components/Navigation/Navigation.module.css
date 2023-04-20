@@ -1,0 +1,109 @@
+.menu{
+    background-color: white;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 40%;
+    z-index: 100;
+}
+
+.select_gender{
+    position: fixed;
+    left: 40px;
+    right: 0px;
+    top: 30px;
+    color: #686868;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.select-gender span{
+    margin-right: 10px;
+}
+
+.bottom_categories{
+    margin-left: 40px;
+    margin-top: 80%;
+    font-size: 15px;
+    line-height: 25px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.bottom_categories p:hover{
+    font-weight: 600;
+}
+
+.selected-gender-font{
+    font-weight: 500;
+    color: black;
+}
+
+.vertical_line{
+    font-size: 28px;
+    color: black;
+    padding-bottom: 4px;
+}
+
+.category_font{
+    font-weight: 600;
+    padding-top: 15px;
+}
+
+.category_font span{
+    cursor: pointer;
+    display: block;
+    margin-top: 4%;
+}
+
+.category_font span:hover{
+    letter-spacing: 1px;
+}
+
+.selected_gender_font{
+    font-weight: 500;
+    color: black;
+}
+
+.red_font{
+    color: red;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.red_font:hover{
+    font-weight: 600;
+}
+
+.categories{
+    position: fixed;
+    top: 12%;
+    left: 40px;
+    font-size: 25px;
+}
+
+.subcategory{
+    position: fixed;
+    left: 22%;
+    top: 16%;
+    font-size: 13px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.bottom_border_line{
+    display: inline-block;
+    width: 170px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.subcategory p{
+    padding-top: 7px;
+}
+
+.subcategory p:hover{
+    font-weight: 600;
+}
