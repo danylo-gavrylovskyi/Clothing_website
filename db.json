@@ -4,7 +4,7 @@
      "parentId" : 1,
      "name": "Contrast colour block puffer j...",
      "addInfo": "+ 5 Colours",
-     "price": "139.00",
+     "price": "45.99",
      "imageUrl": "/img/green_puffer.png",
      "hoverImgUrl": "/img/green_puffer_hover.jpg"
     },
@@ -13,7 +13,7 @@
      "parentId" : 2,
      "name": "Varsity hoodie",
      "addInfo": "+ 2 Colours",
-     "price": "125.00",
+     "price": "23.99",
      "imageUrl": "/img/blue_hoodie.jpg",
      "hoverImgUrl": "/img/blue_hoodie_hover.jpg"
     },
@@ -22,7 +22,7 @@
      "parentId" : 3,
      "name": "Basic puffer jacket",
      "addInfo": "",
-     "price": "179.00",
+     "price": "35.99",
      "imageUrl": "/img/basic_puffer_jacket.jpg",
      "hoverImgUrl": "/img/basic_puffer_jacket_hover.jpg"
     },
@@ -31,7 +31,7 @@
      "parentId" : 4,
      "name": "STWD basic lightweight puffer...",
      "addInfo": "+ 3 Colours",
-     "price": "179.00",
+     "price": "45.99",
      "imageUrl": "/img/lightweight_puffer.jpg",
      "hoverImgUrl": "/img/lightweight_puffer_hover.jpg"
     },
@@ -40,7 +40,7 @@
      "parentId" : 5,
      "name": "Basic hooded sweatshirt",
      "addInfo": "+ 15 Colours",
-     "price": "99.90",
+     "price": "22.99",
      "imageUrl": "/img/basic_black_hoodie.jpg",
      "hoverImgUrl": "/img/basic_black_hoodie_hover.jpg"
     },
@@ -49,7 +49,7 @@
      "parentId" : 6,
      "name": "Star Wars Christmas sweater",
      "addInfo": "",
-     "price": "69.90",
+     "price": "27.99",
      "imageUrl": "/img/star_wars_sweater.jpg",
      "hoverImgUrl": "/img/star_wars_sweater_hover.jpg"
     },
@@ -58,7 +58,7 @@
      "parentId" : 7,
      "name": "One Piece hoodie",
      "addInfo": "",
-     "price": "139.00",
+     "price": "29.99",
      "imageUrl": "/img/one_piece_hoodie.jpg",
      "hoverImgUrl": "/img/one_piece_hoodie_hover.jpg"
     },
@@ -67,7 +67,7 @@
      "parentId" : 8,
      "name": "Checked overshirt with faux s...",
      "addInfo": "",
-     "price": "119.00",
+     "price": "35.99",
      "imageUrl": "/img/checked_overshirt.jpg",
      "hoverImgUrl": "/img/checked_overshirt_hover.jpg"
     }

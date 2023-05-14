@@ -24,14 +24,14 @@ function isCartEmpty(array, onRemove, makeOrder, isOrderLoading, cartCost){
                     </div>
                     <div className={styles.margin_left}>
                         <p>{obj.name}</p>
-                        <p className={styles.price}>{obj.price}PLN</p>
+                        <p className={styles.price}>{obj.price}£</p>
                         <img onClick={() => onRemove(obj)} className={styles.bin} alt="bin" src="img/icons/bin.svg"></img>
                     </div>
                 </section>))}
             </div>
 
             <div className={styles.payment}>
-                <div className={styles.total}><span>TOTAL</span><span>{cartCost}</span></div>
+                <div className={styles.total}><span>TOTAL</span><span>{cartCost}€</span></div>
                 <div className={styles.order_btns}>
                     <button className={styles.gpay}><img alt="gpay" src="img/icons/dark_gpay.svg"></img></button>
                     <button disabled={isOrderLoading} onClick={makeOrder} className={styles.proc_order}>PROCESS ORDER</button>

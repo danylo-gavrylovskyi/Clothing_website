@@ -54,7 +54,6 @@ export function App() {
 
   async function onRemoveFromCart(obj){
     const {data} = await axios.get("https://63fce95c859df29986c75869.mockapi.io/cart")
-    setCartItems(data)
     const deletedItem = data.find(item => Number(item.parentId) === Number(obj.parentId))
     try{
       if (deletedItem){

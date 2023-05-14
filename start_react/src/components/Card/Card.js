@@ -65,7 +65,7 @@ export function Card({imageUrl, hoverImgUrl, cartAddHandler, name, price, addInf
               <div className={styles.description}>
                   <div>
                       <p className={styles.lighter_black}>{name}</p>
-                      <p><span className={styles.bolder}>{price}PLN</span></p>
+                      <p><span className={styles.bolder}>{price}€</span></p>
                       <p className={styles.light_grey_font}>{addInfo}</p>
                   </div>
               </div>
